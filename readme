@@ -1,0 +1,73 @@
+# Lung Cancer Detection Model Training
+
+## Overview
+This project implements a deep learning-based approach for lung cancer detection using transfer learning with three pre-trained models: **Xception, ResNet50, and InceptionV3**. The best-performing model is selected based on validation accuracy.
+
+## Dataset
+
+The dataset is stored in Google Drive and is loaded using Google Colab.
+
+## Dependencies
+Ensure you have the following libraries installed before running the script:
+```bash
+pip install tensorflow numpy seaborn matplotlib scikit-learn streamlit gdown pillow
+```
+
+## File Structure
+```
+|-- lung_cancer_training.py   # Main training script
+|-- lung_cancer_app.py        # Streamlit application script
+|-- README.md                 # This file
+```
+
+## Model Training
+The script follows these steps:
+1. Mounts Google Drive and sets dataset paths.
+2. Loads and augments images using `ImageDataGenerator`.
+3. Defines callbacks for early stopping, learning rate reduction, and best model checkpointing.
+4. Initializes three different pre-trained models (`Xception`, `ResNet50`, `InceptionV3`) with fine-tuned layers.
+5. Trains each model using categorical cross-entropy loss and Adam optimizer.
+6. Evaluates each model and selects the best-performing one.
+
+## Streamlit Web Application
+A **Streamlit** web application is included for lung cancer detection from chest X-ray images.
+
+### Features:
+- User-friendly UI with dark mode support.
+- Symptom checker with a risk assessment system.
+- File uploader for X-ray image analysis.
+- Automated model download from Google Drive if not found locally.
+- AI-based lung cancer prediction using the trained model.
+
+### How to Run Streamlit App
+Run the following command:
+```bash
+streamlit run lung_cancer_app.py
+```
+
+## How to Run Model Training
+Run the script in **Google Colab**:
+```python
+!python lung_cancer_training.py
+```
+The trained models will be saved to Google Drive.
+
+## Evaluation
+After training, the script:
+- Identifies the best-performing model based on validation accuracy.
+- Generates a classification report and confusion matrix.
+- Prints a comparative analysis of all trained models.
+
+## Results
+The best-performing model is saved as:
+```
+/content/drive/MyDrive/best_model.keras
+```
+A confusion matrix is displayed for visual analysis.
+
+## Author
+Harshita Kyadar
+
+## License
+This project is open-source and can be used for research and learning purposes.
+
